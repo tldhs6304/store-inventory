@@ -3,20 +3,27 @@ import { createClient } from "@/lib/supabase/server";
 import * as XLSX from "xlsx";
 
 export async function GET(req: NextRequest) {
-  const supabase = await createClient();
+  const { searchParams } = new URL(req.url);
 
-  // Auth check
-  const { data: { user } } = await supabase.auth.getUser();
-  if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  // Secret key auth (for cron/automated calls) OR session auth
+  const secret = searchParams.get("secret");
+  const validSecret = process.env.EXPORT_SECRET;
 
-  const { data: storeUser } = await supabase
-    .from("store_users")
-    .select("role")
-    .eq("user_id", user.id)
-    .single();
+  if (!secret || secret !== validSecret) {
+    // Fall back to session auth
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-  if (!storeUser || !["buyer", "admin"].includes(storeUser.role as string)) {
-    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    const { data: storeUser } = await supabase
+      .from("store_users")
+      .select("role")
+      .eq("user_id", user.id)
+      .single();
+
+    if (!storeUser || !["buyer", "admin"].includes(storeUser.role as string)) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    }
   }
 
   // Parse week/year from query params (default: current)

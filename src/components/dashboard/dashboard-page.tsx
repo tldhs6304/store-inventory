@@ -21,6 +21,26 @@ interface DashboardPageProps {
 export function DashboardPage({ locale, year, week, stores, submissions }: DashboardPageProps) {
   const t = useTranslations();
   const [uploading, setUploading] = useState(false);
+  const [downloading, setDownloading] = useState(false);
+
+  async function handleExcelDownload() {
+    setDownloading(true);
+    try {
+      const res = await fetch(`/api/export?year=${year}&week=${week}`);
+      if (!res.ok) throw new Error("Export failed");
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `Inventory_W${week}_${year}.xlsx`;
+      a.click();
+      URL.revokeObjectURL(url);
+    } catch {
+      alert("Export failed.");
+    } finally {
+      setDownloading(false);
+    }
+  }
 
   const subMap = new Map(submissions.map((s) => [s.store_id, s]));
 
@@ -66,7 +86,18 @@ export function DashboardPage({ locale, year, week, stores, submissions }: Dashb
               {t("dashboard.week", { week })} · {year}
             </p>
           </div>
-          <LanguageSelector currentLocale={locale} />
+          <div className="flex items-center gap-2">
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={handleExcelDownload}
+              disabled={downloading}
+              className="text-xs h-8"
+            >
+              {downloading ? "..." : "⬇ Excel"}
+            </Button>
+            <LanguageSelector currentLocale={locale} />
+          </div>
         </div>
 
         {/* Overall progress */}

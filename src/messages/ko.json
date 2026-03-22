@@ -1,0 +1,64 @@
+{
+  "common": {
+    "appName": "매장 재고",
+    "save": "저장",
+    "submit": "제출",
+    "cancel": "취소",
+    "loading": "로딩 중...",
+    "error": "오류가 발생했습니다",
+    "success": "저장되었습니다"
+  },
+  "auth": {
+    "title": "매장 재고",
+    "subtitle": "주간 재고 관리",
+    "email": "이메일",
+    "password": "비밀번호",
+    "signIn": "로그인",
+    "signingIn": "로그인 중...",
+    "invalidCredentials": "이메일 또는 비밀번호가 올바르지 않습니다"
+  },
+  "language": {
+    "label": "언어",
+    "en": "English",
+    "ko": "한국어",
+    "es": "Español"
+  },
+  "inventory": {
+    "title": "재고 입력",
+    "week": "주차",
+    "store": "매장",
+    "deadline": "마감",
+    "deadlineCountdown": "{days}일 {hours}시간 남음",
+    "deadlinePast": "마감 초과",
+    "deadlineToday": "오늘 마감",
+    "progress": "{done} / {total} 항목 입력됨",
+    "submitAll": "재고 제출",
+    "submitted": "제출 완료",
+    "submittedAt": "{time}에 제출됨",
+    "sections": {
+      "front": "매장 앞",
+      "back": "창고",
+      "order": "발주 요청"
+    },
+    "frontHint": "매장 진열 수량",
+    "backHint": "창고/냉장고 수량",
+    "orderHint": "바이어 발주 요청",
+    "noProducts": "등록된 제품이 없습니다",
+    "searchPlaceholder": "제품 검색...",
+    "confirmSubmit": "{store} 매장 {week}주차 재고를 제출하시겠습니까?",
+    "confirmSubmitNote": "제출 후 바이어에게 알림이 갑니다. 제출 후에도 수정 가능합니다.",
+    "autoSaved": "자동 저장됨"
+  },
+  "dashboard": {
+    "title": "대시보드",
+    "allStores": "전체 매장",
+    "week": "{week}주차",
+    "submitted": "제출 완료",
+    "pending": "진행 중",
+    "notStarted": "미시작",
+    "storeStatus": "매장 현황",
+    "inventoryMatrix": "재고 현황",
+    "lastUpdated": "{time} 업데이트",
+    "noSubmission": "데이터 없음"
+  }
+}

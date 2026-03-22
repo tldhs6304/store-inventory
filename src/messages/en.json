@@ -1,0 +1,64 @@
+{
+  "common": {
+    "appName": "Store Inventory",
+    "save": "Save",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Saved successfully"
+  },
+  "auth": {
+    "title": "Store Inventory",
+    "subtitle": "Weekly inventory tracking",
+    "email": "Email",
+    "password": "Password",
+    "signIn": "Sign In",
+    "signingIn": "Signing in...",
+    "invalidCredentials": "Invalid email or password"
+  },
+  "language": {
+    "label": "Language",
+    "en": "English",
+    "ko": "한국어",
+    "es": "Español"
+  },
+  "inventory": {
+    "title": "Inventory",
+    "week": "Week",
+    "store": "Store",
+    "deadline": "Deadline",
+    "deadlineCountdown": "Due in {days}d {hours}h",
+    "deadlinePast": "Submission overdue",
+    "deadlineToday": "Due today",
+    "progress": "{done} / {total} items entered",
+    "submitAll": "Submit Inventory",
+    "submitted": "Submitted",
+    "submittedAt": "Submitted {time}",
+    "sections": {
+      "front": "Front",
+      "back": "Back",
+      "order": "Order Request"
+    },
+    "frontHint": "Floor / shelf qty",
+    "backHint": "Back room / cooler qty",
+    "orderHint": "Request to buyer",
+    "noProducts": "No products assigned",
+    "searchPlaceholder": "Search products...",
+    "confirmSubmit": "Submit inventory for {store} Week {week}?",
+    "confirmSubmitNote": "This will notify the buyer. You can still edit after submission.",
+    "autoSaved": "Auto-saved"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "allStores": "All Stores",
+    "week": "Week {week}",
+    "submitted": "Submitted",
+    "pending": "Pending",
+    "notStarted": "Not Started",
+    "storeStatus": "Store Status",
+    "inventoryMatrix": "Inventory Matrix",
+    "lastUpdated": "Updated {time}",
+    "noSubmission": "No data"
+  }
+}

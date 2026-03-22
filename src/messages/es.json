@@ -1,0 +1,64 @@
+{
+  "common": {
+    "appName": "Inventario",
+    "save": "Guardar",
+    "submit": "Enviar",
+    "cancel": "Cancelar",
+    "loading": "Cargando...",
+    "error": "Ocurrió un error",
+    "success": "Guardado exitosamente"
+  },
+  "auth": {
+    "title": "Inventario de Tienda",
+    "subtitle": "Control de inventario semanal",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "signIn": "Iniciar sesión",
+    "signingIn": "Iniciando sesión...",
+    "invalidCredentials": "Correo o contraseña incorrectos"
+  },
+  "language": {
+    "label": "Idioma",
+    "en": "English",
+    "ko": "한국어",
+    "es": "Español"
+  },
+  "inventory": {
+    "title": "Inventario",
+    "week": "Semana",
+    "store": "Tienda",
+    "deadline": "Fecha límite",
+    "deadlineCountdown": "Vence en {days}d {hours}h",
+    "deadlinePast": "Envío atrasado",
+    "deadlineToday": "Vence hoy",
+    "progress": "{done} / {total} artículos ingresados",
+    "submitAll": "Enviar inventario",
+    "submitted": "Enviado",
+    "submittedAt": "Enviado {time}",
+    "sections": {
+      "front": "Frente",
+      "back": "Bodega",
+      "order": "Pedido"
+    },
+    "frontHint": "Cantidad en piso / estante",
+    "backHint": "Cantidad en bodega / refrigerador",
+    "orderHint": "Solicitud al comprador",
+    "noProducts": "Sin productos asignados",
+    "searchPlaceholder": "Buscar productos...",
+    "confirmSubmit": "¿Enviar inventario de {store} Semana {week}?",
+    "confirmSubmitNote": "Esto notificará al comprador. Aún puede editar después de enviar.",
+    "autoSaved": "Guardado automáticamente"
+  },
+  "dashboard": {
+    "title": "Panel",
+    "allStores": "Todas las tiendas",
+    "week": "Semana {week}",
+    "submitted": "Enviado",
+    "pending": "Pendiente",
+    "notStarted": "Sin iniciar",
+    "storeStatus": "Estado de tiendas",
+    "inventoryMatrix": "Matriz de inventario",
+    "lastUpdated": "Actualizado {time}",
+    "noSubmission": "Sin datos"
+  }
+}

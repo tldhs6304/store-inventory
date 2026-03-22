@@ -8,13 +8,17 @@ const intlMiddleware = createMiddleware(routing);
 export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
+  // API routes: skip intl + auth entirely
+  if (pathname.startsWith("/api")) {
+    return NextResponse.next();
+  }
+
   // Run intl middleware first (adds locale prefix, locale detection)
   const intlResponse = intlMiddleware(req);
 
-  // Skip auth check for login page and API routes
+  // Skip auth check for login page
   const isLoginPage = /^\/[a-z]{2}\/login/.test(pathname);
-  const isApiRoute = pathname.startsWith("/api");
-  if (isLoginPage || isApiRoute) {
+  if (isLoginPage) {
     return intlResponse;
   }
 

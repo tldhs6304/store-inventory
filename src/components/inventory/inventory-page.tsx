@@ -249,7 +249,8 @@ function ProductRow({ product, entry, locale, onChange }: ProductRowProps) {
       <div className="min-w-0">
         <p className="text-sm font-medium leading-tight truncate">{name}</p>
         <p className="text-xs text-muted-foreground truncate">
-          {product.unit && <span>{product.unit}</span>}
+          {product.b1_code && <span className="font-mono">{product.b1_code}</span>}
+          {product.unit && <span className="ml-1">{product.unit}</span>}
           {product.pack && product.pack !== 1 && <span> ×{product.pack}</span>}
         </p>
       </div>

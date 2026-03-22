@@ -4,6 +4,7 @@ import * as XLSX from "xlsx";
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
+  const supabase = await createClient();
 
   // Secret key auth (for cron/automated calls) OR session auth
   const secret = searchParams.get("secret");
@@ -11,7 +12,6 @@ export async function GET(req: NextRequest) {
 
   if (!secret || secret !== validSecret) {
     // Fall back to session auth
-    const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
@@ -27,7 +27,6 @@ export async function GET(req: NextRequest) {
   }
 
   // Parse week/year from query params (default: current)
-  const { searchParams } = new URL(req.url);
   const year = parseInt(searchParams.get("year") ?? String(new Date().getFullYear()));
   const week = parseInt(searchParams.get("week") ?? String(getISOWeek(new Date())));
 

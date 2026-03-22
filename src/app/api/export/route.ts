@@ -1,17 +1,25 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
+import { createClient as createSupabaseClient } from "@supabase/supabase-js";
 import * as XLSX from "xlsx";
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
-  const supabase = await createClient();
 
   // Secret key auth (for cron/automated calls) OR session auth
   const secret = searchParams.get("secret");
   const validSecret = process.env.EXPORT_SECRET;
+  let supabase;
 
-  if (!secret || secret !== validSecret) {
-    // Fall back to session auth
+  if (secret && secret === validSecret) {
+    // Use service role key to bypass RLS
+    supabase = createSupabaseClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!
+    );
+  } else {
+    // Session auth
+    supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
